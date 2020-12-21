@@ -10,9 +10,9 @@
   "author": "chaodonghu",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
-    "discord-webhook-node": "^1.0.7",
+    "axios": "^0.21.0",
+    "discord-webhook-node": "^1.1.8",
     "https-proxy-agent": "^5.0.0",
-    "mongoose": "^5.9.10"
+    "mongoose": "^5.11.8"
   }
 }
