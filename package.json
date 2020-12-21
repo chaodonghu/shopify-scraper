@@ -1,13 +1,13 @@
 {
-  "name": "shopify-monitor",
-  "version": "1.4.1",
-  "description": "Shopify monitor",
+  "name": "shopify-scraper",
+  "version": "1.0.0",
+  "description": "Shopify scraper",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "author": "Dam998",
+  "author": "chaodonghu",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
