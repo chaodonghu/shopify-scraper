@@ -15,11 +15,11 @@
   "keywords": [["Nike"]],
   "sites": [
     {
-      "url": "deadstock.ca/",
+      "url": "deadstock.ca",
       "keywords": [["Nike"], ["Adidas", "Yeezy"], ["Jordan"]]
     },
     {
-      "url": "capsuletoronto.com/",
+      "url": "capsuletoronto.com",
       "keywords": [["Nike"], ["Adidas", "Yeezy"], ["Jordan"]]
     },
     {
@@ -27,7 +27,19 @@
       "keywords": [["Nike"], ["Adidas", "Yeezy"], ["Jordan"]]
     },
     {
-      "url": "ca.octobersveryown.com/"
+      "url": "ca.octobersveryown.com"
+    },
+    {
+      "url": "nrml.ca",
+      "keywords": [["Nike"], ["Adidas", "Yeezy"], ["Jordan"]]
+    },
+    {
+      "url": "shop.havenshop.com",
+      "keywords": [["Nike"], ["Adidas", "Yeezy"], ["Jordan"]]
+    },
+    {
+      "url": "kith.com",
+      "keywords": [["Nike"], ["Adidas", "Yeezy"], ["Jordan"]]
     }
   ],
   "proxiesList": []
