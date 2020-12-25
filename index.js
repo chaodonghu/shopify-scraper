@@ -1,5 +1,7 @@
 global.config = require("./config");
 
+require('dotenv').config()
+
 const mongoose = require("mongoose");
 
 const Task = require("./src/classes/Task.js");
@@ -7,7 +9,7 @@ const Seller = require("./src/models/Seller");
 
 const Discord = require("./src/classes/Discord");
 
-mongoose.connect(global.config.mongodb_uri, {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

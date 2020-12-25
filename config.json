@@ -1,8 +1,4 @@
 {
-  "mongodb_uri": "mongodb://db:27017/shopify",
-  "webhook_url": [
-    "https://discord.com/api/webhooks/790405008453009418/tIssem3UQdypf85RlYvfKQDeoY1OUiIlIlRHqNAmHKE3fJtZ5OlQRwLXKxXfE4SBiVOb"
-  ],
   "discord_message_settings": {
     "botImage": "https://memegenerator.net/img/images/300x300/72665487.jpg",
     "botName": "Shopify Release Monitor",

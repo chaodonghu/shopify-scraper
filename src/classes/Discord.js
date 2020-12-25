@@ -2,7 +2,7 @@ const { Webhook, MessageBuilder } = require("discord-webhook-node");
 
 const Log = require("./Log");
 
-if (global.config.webhook_url === []) {
+if (process.env.WEBHOOK_URLS.split(',') === []) {
   Log.Error(
     "Discord webhook url cannot be empty, insert it in the config.json file"
   );
@@ -15,7 +15,7 @@ const botSettings = global.config.discord_message_settings;
 var setBotName = botSettings.botName && botSettings.botName != "";
 var setBotImage = botSettings.botImage && botSettings.botImage != "";
 
-global.config.webhook_url.forEach((x) => {
+process.env.WEBHOOK_URLS.split(',').forEach((x) => {
   var hook = new Webhook(x);
 
   if (setBotName) {
