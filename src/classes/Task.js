@@ -183,27 +183,27 @@ class Task {
             Date.now() + 60000 * this.currentProxy.banCount;
         } else if (err.response && err.response.status === 403) {
           Log.Error(
-            `${this.sellerUrl} has an high level of protection from monitors, please notify Dam998 by opening an issue on github [https://github.com/Dam998/shopify-monitor]`
+            `${this.sellerUrl} has an high level of protection from monitors`
           );
           clearInterval(this.task);
         } else if (err.response && err.response.status === 502) {
           Log.Error(
-            `Bad gateway error, if you are using ipv6 proxy don't use it, because it's not supported. If this is not the solution please open an issue on github [https://github.com/Dam998/shopify-monitor]`
+            `Bad gateway error, if you are using ipv6 proxy don't use it, because it's not supported.`
           );
           this.currentProxy.unbanTime = -1;
         } else if (err.response && err.response.status === 502) {
           Log.Warning(
-            `Unknown Error from server, notify Dam998 by opening an issue on github [https://github.com/Dam998/shopify-monitor] if the problem persists`
+            `Unknown Error from server`
           );
           this.currentProxy.unbanTime = -1;
         } else if (err.code === "ETIMEDOUT") {
           Log.Error(
-            `Timeout occurred, a node js script cannot manage a lot of requests in the same time (I raccomand max 10 sites for script's istance, to stay more safe), please start more that 1 monitor with splitted sites or contact Dam998 for help [https://github.com/Dam998/shopify-monitor]`
+            `Timeout occurred, a node js script cannot manage a lot of requests in the same time`
           );
           clearInterval(this.task);
         } else if (err.code === "ECONNRESET") {
           Log.Warning(
-            `The connection was reset, notify Dam998 by opening an issue on github [https://github.com/Dam998/shopify-monitor] if the problem persists`
+            `The connection was reset`
           );
         } else {
           console.log(err);
