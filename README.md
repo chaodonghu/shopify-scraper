@@ -14,7 +14,7 @@ A sample notification on discord:
 **Usage**
 ---
 
-The repository has been dockerized to allow for easy development and deployment and to also avoid any environment issues.
+The repository has been dockerized to allow for easy development and deployment.
 
 1. Install [`Docker`](https://www.docker.com/)
 
@@ -28,13 +28,7 @@ WEBHOOK_URLS = "https://discord.com/api/webhooks/etcetcetc"
 
 ```
 
-3. Build the image
-
-```
-docker-compose build
-```
-
-4. Run the container
+3. Run the app with
 
 ```
 docker-compose up
@@ -67,7 +61,7 @@ These should be defined in `config.json`
 1. discord_message_settings
 
 TODOTODOTODO
-        
+
 **Future Improvements**
 ---
 
