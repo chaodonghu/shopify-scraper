@@ -1,8 +1,7 @@
-const { Webhook, MessageBuilder } = require("discord-webhook-node");
+import { Webhook, MessageBuilder } from "discord-webhook-node";
+import Log from "./Log.js";
 
-const Log = require("./Log");
-
-if (process.env.WEBHOOK_URLS.split(',') === []) {
+if (process.env.WEBHOOK_URLS.split(",") === []) {
   Log.Error(
     "Discord webhook url cannot be empty, insert it in the config.json file"
   );
@@ -10,12 +9,18 @@ if (process.env.WEBHOOK_URLS.split(',') === []) {
 }
 
 const hooks = [];
-const botSettings = global.config.discord_message_settings;
+const botSettings = {
+  botImage: "https://memegenerator.net/img/images/300x300/72665487.jpg",
+  botName: "Shopify Release Monitor",
+  footerDescription: "",
+  footerImage: "",
+  timeOfNotification: true,
+};
 
 var setBotName = botSettings.botName && botSettings.botName != "";
 var setBotImage = botSettings.botImage && botSettings.botImage != "";
 
-process.env.WEBHOOK_URLS.split(',').forEach((x) => {
+process.env.WEBHOOK_URLS.split(",").forEach((x) => {
   var hook = new Webhook(x);
 
   if (setBotName) {
@@ -97,4 +102,4 @@ Discord.info = async (title) => {
   });
 };
 
-module.exports = Discord;
+export default Discord;

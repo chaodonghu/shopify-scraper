@@ -1,15 +1,12 @@
-const axios = require("axios");
-const httpsProxyAgent = require("https-proxy-agent");
+import axios from "axios";
+import httpsProxyAgent from "https-proxy-agent";
 
-const Discord = require("./Discord");
+import Discord from "./Discord.js";
+import Seller from "../models/Seller.js";
+import Product from "./Product.js";
+import Log from "./Log.js";
 
-const Seller = require("../models/Seller");
-
-const Product = require("./Product");
-
-const Log = require("./Log");
-
-class Task {
+export default class Task {
   constructor(taskSettings) {
     this.sellerUrl = taskSettings.url;
     this.firstRun = true;
@@ -192,9 +189,7 @@ class Task {
           );
           this.currentProxy.unbanTime = -1;
         } else if (err.response && err.response.status === 502) {
-          Log.Warning(
-            `Unknown Error from server`
-          );
+          Log.Warning(`Unknown Error from server`);
           this.currentProxy.unbanTime = -1;
         } else if (err.code === "ETIMEDOUT") {
           Log.Error(
@@ -202,14 +197,12 @@ class Task {
           );
           clearInterval(this.task);
         } else if (err.code === "ECONNRESET") {
-          Log.Warning(
-            `The connection was reset`
-          );
+          Log.Warning(`The connection was reset`);
         } else {
           console.log(err);
         }
       }
-    }, global.config.requestTiming);
+    }, 30000);
   };
 
   productsToCheck = (products) => {
@@ -242,5 +235,3 @@ class Task {
     });
   };
 }
-
-module.exports = Task;

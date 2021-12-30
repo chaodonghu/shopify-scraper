@@ -1,4 +1,4 @@
-class Product {
+export default class Product {
     constructor(id, sellerUrl, lastUpdate = "", handle = "", title = "", url = "", image = "", variants = []) {
         this.id = id;
         this.sellerUrl = sellerUrl;
@@ -53,11 +53,9 @@ class Product {
                 || oldV.available != newV.available){
                     needToNotifyUpdate = true;
                     break;
-                }                
+                }
         }
-        
+
         return needToNotifyUpdate;
     }
 }
-
-module.exports = Product;

@@ -12,4 +12,4 @@ Log.Error = (message) => {
     console.log('\x1b[31m', `[ERROR  ]`, '\x1b[0m', message)
 }
 
-module.exports = Log;
+export default Log
