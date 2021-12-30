@@ -13,21 +13,21 @@ export default class Task {
     this.sellerId = taskSettings._id;
 
     this.keywords = taskSettings.keywords;
-    if (global.config.keywords) {
-      this.keywords = this.keywords.concat(global.config.keywords);
-    }
+    // if (global.config.keywords) {
+    //   this.keywords = this.keywords.concat(global.config.keywords);
+    // }
 
     this.proxiesList = [{ url: "", unbanTime: 0, banCount: 0.5 }];
     this.proxyCount = 0;
-    if (global.config.proxiesList && global.config.proxiesList.length > 0) {
-      this.proxiesList = this.proxiesList.concat(
-        global.config.proxiesList.map((x) => ({
-          url: x,
-          unbanTime: 0,
-          banCount: 0.5,
-        }))
-      );
-    }
+    // if (global.config.proxiesList && global.config.proxiesList.length > 0) {
+    //   this.proxiesList = this.proxiesList.concat(
+    //     global.config.proxiesList.map((x) => ({
+    //       url: x,
+    //       unbanTime: 0,
+    //       banCount: 0.5,
+    //     }))
+    //   );
+    // }
     this.currentProxy = {};
   }
 

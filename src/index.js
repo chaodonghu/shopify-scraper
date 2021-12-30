@@ -51,6 +51,8 @@ try {
               }, 4000 * i);
             }
 
+            console.log('go in here')
+
             Discord.info(
               "Monitor successfully started, time to get that bread fam"
             );
@@ -71,11 +73,5 @@ try {
     }
   })();
 } catch (err) {
-  console.log(
-    "---------------- Error has occured ----------------------------"
-  );
   console.log(err);
-  console.log(
-    "---------------- Error has occured ----------------------------"
-  );
 }
