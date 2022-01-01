@@ -1,10 +1,11 @@
 import axios from "axios";
 import httpsProxyAgent from "https-proxy-agent";
 
+import { REQUEST_TIMING } from "../config.js";
 import Discord from "./Discord.js";
-import Seller from "../models/Seller.js";
-import Product from "./Product.js";
 import Log from "./Log.js";
+import Product from "./Product.js";
+import Seller from "../models/Seller.js";
 
 export default class Task {
   constructor(taskSettings) {
@@ -202,7 +203,7 @@ export default class Task {
           console.log(err);
         }
       }
-    }, 30000);
+    }, REQUEST_TIMING);
   };
 
   productsToCheck = (products) => {

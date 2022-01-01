@@ -1,5 +1,6 @@
 import { Webhook, MessageBuilder } from "discord-webhook-node";
 import Log from "./Log.js";
+import { DISCORD_MESSAGE_SETTINGS } from "../config.js";
 
 if (process.env.WEBHOOK_URLS.split(",") === []) {
   Log.Error(
@@ -9,26 +10,21 @@ if (process.env.WEBHOOK_URLS.split(",") === []) {
 }
 
 const hooks = [];
-const botSettings = {
-  botImage: "https://memegenerator.net/img/images/300x300/72665487.jpg",
-  botName: "Shopify Release Monitor",
-  footerDescription: "",
-  footerImage: "",
-  timeOfNotification: true,
-};
 
-var setBotName = botSettings.botName && botSettings.botName != "";
-var setBotImage = botSettings.botImage && botSettings.botImage != "";
+var setBotName =
+  DISCORD_MESSAGE_SETTINGS.botName && DISCORD_MESSAGE_SETTINGS.botName != "";
+var setBotImage =
+  DISCORD_MESSAGE_SETTINGS.botImage && DISCORD_MESSAGE_SETTINGS.botImage != "";
 
 process.env.WEBHOOK_URLS.split(",").forEach((x) => {
   var hook = new Webhook(x);
 
   if (setBotName) {
-    hook.setUsername(botSettings.botName);
+    hook.setUsername(DISCORD_MESSAGE_SETTINGS.botName);
   }
 
   if (setBotImage) {
-    hook.setAvatar(botSettings.botImage);
+    hook.setAvatar(DISCORD_MESSAGE_SETTINGS.botImage);
   }
 
   hooks.push(hook);
@@ -81,13 +77,18 @@ Discord.notifyProduct = async ({
     .setThumbnail(image);
 
   if (
-    (botSettings.footerDescription && botSettings.footerDescription != "") ||
-    (botSettings.footerImage && botSettings.footerImage != "")
+    (DISCORD_MESSAGE_SETTINGS.footerDescription &&
+      DISCORD_MESSAGE_SETTINGS.footerDescription != "") ||
+    (DISCORD_MESSAGE_SETTINGS.footerImage &&
+      DISCORD_MESSAGE_SETTINGS.footerImage != "")
   ) {
-    embed.setFooter(botSettings.footerDescription, botSettings.footerImage);
+    embed.setFooter(
+      DISCORD_MESSAGE_SETTINGS.footerDescription,
+      DISCORD_MESSAGE_SETTINGS.footerImage
+    );
   }
 
-  if (botSettings.timeOfNotification) {
+  if (DISCORD_MESSAGE_SETTINGS.timeOfNotification) {
     embed.setTimestamp();
   }
 
