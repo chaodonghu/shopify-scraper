@@ -32,4 +32,7 @@ export const SITES = [
     url: "shop.havenshop.com",
     keywords: [["Nike"], ["Adidas", "Yeezy"], ["Jordan"]],
   },
+  {
+    url: "100thieves.com",
+  },
 ];

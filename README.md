@@ -18,15 +18,9 @@ The repository has been dockerized to allow for easy development and deployment.
 
 1. Install [`Docker`](https://www.docker.com/)
 
-2. Make a `.env` file to store environment variables/secrets/urls
+2. Copy the `.env.example` file and make a `.env` file to store environment variables/secrets/urls
 
-Add your `MONGODB_URI` and `WEBHOOK_URLS` to the `.env` file (See `Configuration Options` for more information)
-
-```
-MONGODB_URI = “mongodb://db:27017/shopify”
-WEBHOOK_URLS = "https://discord.com/api/webhooks/etcetcetc"
-
-```
+Add your `DB` credentials and `WEBHOOK_URLS` to the `.env` file (See `Configuration Options` for more information)
 
 3. Run the app with
 
@@ -45,22 +39,22 @@ On successful run you should see a message in your discord: `Monitor successfull
 
 These should be defined in `.env`
 
-1. MONGODB_URI
+1. MONGODB_URI which consists of `DB_HOST`, `DB_NAME`, `DB_PASS`, `DB_PORT` and `DB_USER`
 
     + URI that connects to your mongodb database by default utilize `mongodb://db:27017/xxx` with xxx being any database  name you would like to specify (eg. `mongodb://db:27017/shopify_database`)
 
 2. WEBHOOK_URLS
 
-    + Discord webhook urls which will be converted into an array, seperate these urls by commas in your `.env` file
-    + eg. (`"https://discord.com/api/webhooks/1/,"https://discord.com/api/webhooks/2/")
+    + Discord webhook urls which will be converted into an array, seperate these urls by commas in your `.env` file eg. (`"https://discord.com/api/webhooks/1/,"https://discord.com/api/webhooks/2/")
 
 **Configuration:**
 
-These should be defined in `config.json`
+These should be defined in `/src/config.js`
 
-1. discord_message_settings
+1. `DISCORD_MESSAGE_SETTINGS`
+2. `REQUEST_TIMING`
+3. `SITES`
 
-TODOTODOTODO
 
 **Future Improvements**
 ---
