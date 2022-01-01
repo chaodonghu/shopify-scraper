@@ -1,18 +1,29 @@
 version: '3'
 services:
-  db:
-    image: 'mongo'
-    ports:
-      - "27017:27017"
-  api:
+  bot-app:
     build: .
-    restart: always
-    command: sh -c "npm install && npm run start"
+    command: sh -c "yarn install && yarn start"
     volumes:
       - .:/app
     ports:
-      - "3000:3000"
-    environment:
-      PORT: 3000
+      - "4500:4500"
+    env_file: .env
+    links:
+      - mongodb
     depends_on:
-      - db
+      - mongodb
+    environment:
+      WAIT_HOSTS: mongodb:27017
+    networks:
+      - node-webapp-network
+  mongodb:
+    image: 'mongo:4.4.6'
+    volumes:
+      - ~/mongo:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - node-webapp-network
+networks:
+  node-webapp-network:
+    driver: bridge

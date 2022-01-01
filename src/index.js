@@ -1,23 +1,23 @@
-global.config = require("./config");
+import { Webhook, MessageBuilder } from "discord-webhook-node";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
 
-require('dotenv').config()
+import Task from "./classes/Task.js";
+import Seller from "./models/Seller.js";
+import Discord from "./classes/Discord.js";
+import { SITES } from "./config.js";
 
-const mongoose = require("mongoose");
+mongoose.Promise = global.Promise;
+dotenv.config();
 
-const Task = require("./src/classes/Task.js");
-const Seller = require("./src/models/Seller");
+const { DB_HOST, DB_NAME, DB_PORT } = process.env;
 
-const Discord = require("./src/classes/Discord");
-
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(`mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`);
 
 try {
   Seller.deleteMany({}, (err) => {
     if (!err) {
-      Seller.insertMany(global.config.sites, (err) => {
+      Seller.insertMany(SITES, (err) => {
         if (!err) {
           Seller.find({}, (err, tasksQuery) => {
             for (let i = 0; i < tasksQuery.length; i++) {

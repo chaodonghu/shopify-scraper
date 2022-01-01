@@ -1,8 +1,8 @@
-const { Webhook, MessageBuilder } = require("discord-webhook-node");
+import { Webhook, MessageBuilder } from "discord-webhook-node";
+import Log from "./Log.js";
+import { DISCORD_MESSAGE_SETTINGS } from "../config.js";
 
-const Log = require("./Log");
-
-if (process.env.WEBHOOK_URLS.split(',') === []) {
+if (process.env.WEBHOOK_URLS.split(",") === []) {
   Log.Error(
     "Discord webhook url cannot be empty, insert it in the config.json file"
   );
@@ -10,20 +10,21 @@ if (process.env.WEBHOOK_URLS.split(',') === []) {
 }
 
 const hooks = [];
-const botSettings = global.config.discord_message_settings;
 
-var setBotName = botSettings.botName && botSettings.botName != "";
-var setBotImage = botSettings.botImage && botSettings.botImage != "";
+let setBotName =
+  DISCORD_MESSAGE_SETTINGS.botName && DISCORD_MESSAGE_SETTINGS.botName != "";
+let setBotImage =
+  DISCORD_MESSAGE_SETTINGS.botImage && DISCORD_MESSAGE_SETTINGS.botImage != "";
 
-process.env.WEBHOOK_URLS.split(',').forEach((x) => {
-  var hook = new Webhook(x);
+process.env.WEBHOOK_URLS.split(",").forEach((x) => {
+  let hook = new Webhook(x);
 
   if (setBotName) {
-    hook.setUsername(botSettings.botName);
+    hook.setUsername(DISCORD_MESSAGE_SETTINGS.botName);
   }
 
   if (setBotImage) {
-    hook.setAvatar(botSettings.botImage);
+    hook.setAvatar(DISCORD_MESSAGE_SETTINGS.botImage);
   }
 
   hooks.push(hook);
@@ -44,14 +45,14 @@ Discord.notifyProduct = async ({
     .setAuthor(sellerUrl, image, url)
     .setURL(url);
 
-  var availablesVariants = variants.filter((x) => x.available);
+  let availablesVariants = variants.filter((x) => x.available);
   if (availablesVariants.length > 0) {
-    var sizesDescription = [];
+    let sizesDescription = [];
     sizesDescription.push("");
-    var count = 0;
+    let count = 0;
 
     availablesVariants.forEach((x) => {
-      var toAdd = `${x.title} [[ATC](https://${sellerUrl}/cart/add?id=${x.id})]\n`;
+      let toAdd = `${x.title} [[ATC](https://${sellerUrl}/cart/add?id=${x.id})]\n`;
       if (sizesDescription[count].length + toAdd.length > 1024) {
         sizesDescription.push(toAdd);
         count++;
@@ -76,13 +77,18 @@ Discord.notifyProduct = async ({
     .setThumbnail(image);
 
   if (
-    (botSettings.footerDescription && botSettings.footerDescription != "") ||
-    (botSettings.footerImage && botSettings.footerImage != "")
+    (DISCORD_MESSAGE_SETTINGS.footerDescription &&
+      DISCORD_MESSAGE_SETTINGS.footerDescription != "") ||
+    (DISCORD_MESSAGE_SETTINGS.footerImage &&
+      DISCORD_MESSAGE_SETTINGS.footerImage != "")
   ) {
-    embed.setFooter(botSettings.footerDescription, botSettings.footerImage);
+    embed.setFooter(
+      DISCORD_MESSAGE_SETTINGS.footerDescription,
+      DISCORD_MESSAGE_SETTINGS.footerImage
+    );
   }
 
-  if (botSettings.timeOfNotification) {
+  if (DISCORD_MESSAGE_SETTINGS.timeOfNotification) {
     embed.setTimestamp();
   }
 
@@ -97,4 +103,4 @@ Discord.info = async (title) => {
   });
 };
 
-module.exports = Discord;
+export default Discord;
