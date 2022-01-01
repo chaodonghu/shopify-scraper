@@ -35,7 +35,7 @@ export default class Task {
   start = async () => {
     this.task = setInterval(async () => {
       try {
-        var config = {};
+        let config = {};
 
         do {
           this.currentProxy = this.proxiesList[this.proxyCount];
@@ -65,23 +65,23 @@ export default class Task {
           };
         }
 
-        var url = `https://${this.sellerUrl}/products.json?limit=250`;
+        let url = `https://${this.sellerUrl}/products.json?limit=250`;
 
         const response = await axios.get(url, config);
 
         this.currentProxy.banCount = 0.5;
 
-        var products = response.data.products;
+        let products = response.data.products;
 
         if (this.firstRun) {
-          var newProducts = [];
+          let newProducts = [];
 
           if (this.keywords.length > 0) {
             products = this.productsToCheck(products);
           }
 
           products.forEach((x) => {
-            var product = new Product(x.id, this.sellerUrl);
+            let product = new Product(x.id, this.sellerUrl);
             product.updateInformation(x);
 
             newProducts = [...newProducts, product];
@@ -104,22 +104,22 @@ export default class Task {
             } else if (products.length === 0) {
               Log.Warning(`No products found in ${this.sellerUrl}`);
             } else {
-              var oldProducts = sellerQuery.products;
-              var newProducts = [];
+              let oldProducts = sellerQuery.products;
+              let newProducts = [];
 
               if (this.keywords.length > 0) {
                 products = this.productsToCheck(products);
               }
 
               await products.forEach(async (product) => {
-                var found = oldProducts.find((x) => x.id === product.id);
+                let found = oldProducts.find((x) => x.id === product.id);
 
                 if (found) {
                   if (found.lastUpdate === product.updated_at) {
                     return;
                   }
 
-                  var oldPr = new Product(
+                  let oldPr = new Product(
                     found.id,
                     found.sellerUrl,
                     found.lastUpdate,
@@ -129,7 +129,7 @@ export default class Task {
                     found.image,
                     found.variants
                   );
-                  var newPr = new Product(product.id, this.sellerUrl);
+                  let newPr = new Product(product.id, this.sellerUrl);
                   newPr.updateInformation(product);
 
                   if (oldPr.needToNotifyUpdate(newPr)) {
@@ -145,7 +145,7 @@ export default class Task {
                     );
                   }
                 } else {
-                  var newPr = new Product(product.id, this.sellerUrl);
+                  let newPr = new Product(product.id, this.sellerUrl);
                   newPr.updateInformation(product);
                   newProducts = [...newProducts, newPr];
                   Discord.notifyProduct(newPr);
@@ -208,13 +208,13 @@ export default class Task {
 
   productsToCheck = (products) => {
     return products.filter((product) => {
-      var title = product.title.toLowerCase();
-      var vendor = product.vendor.toLowerCase();
-      var url = product.handle.toLowerCase();
-      for (var keys of this.keywords) {
-        var check = true;
-        for (var key of keys) {
-          var keyToLower = key.toLowerCase();
+      let title = product.title.toLowerCase();
+      let vendor = product.vendor.toLowerCase();
+      let url = product.handle.toLowerCase();
+      for (let keys of this.keywords) {
+        let check = true;
+        for (let key of keys) {
+          let keyToLower = key.toLowerCase();
           if (
             title.indexOf(keyToLower) === -1 &&
             vendor.indexOf(keyToLower) === -1 &&

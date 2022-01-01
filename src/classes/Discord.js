@@ -11,13 +11,13 @@ if (process.env.WEBHOOK_URLS.split(",") === []) {
 
 const hooks = [];
 
-var setBotName =
+let setBotName =
   DISCORD_MESSAGE_SETTINGS.botName && DISCORD_MESSAGE_SETTINGS.botName != "";
-var setBotImage =
+let setBotImage =
   DISCORD_MESSAGE_SETTINGS.botImage && DISCORD_MESSAGE_SETTINGS.botImage != "";
 
 process.env.WEBHOOK_URLS.split(",").forEach((x) => {
-  var hook = new Webhook(x);
+  let hook = new Webhook(x);
 
   if (setBotName) {
     hook.setUsername(DISCORD_MESSAGE_SETTINGS.botName);
@@ -45,14 +45,14 @@ Discord.notifyProduct = async ({
     .setAuthor(sellerUrl, image, url)
     .setURL(url);
 
-  var availablesVariants = variants.filter((x) => x.available);
+  let availablesVariants = variants.filter((x) => x.available);
   if (availablesVariants.length > 0) {
-    var sizesDescription = [];
+    let sizesDescription = [];
     sizesDescription.push("");
-    var count = 0;
+    let count = 0;
 
     availablesVariants.forEach((x) => {
-      var toAdd = `${x.title} [[ATC](https://${sellerUrl}/cart/add?id=${x.id})]\n`;
+      let toAdd = `${x.title} [[ATC](https://${sellerUrl}/cart/add?id=${x.id})]\n`;
       if (sizesDescription[count].length + toAdd.length > 1024) {
         sizesDescription.push(toAdd);
         count++;
