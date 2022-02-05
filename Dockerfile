@@ -4,12 +4,10 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-COPY build ./build
-COPY public ./public
 COPY package.json .
 
 RUN yarn install --frozen-lockfile --production
 
-EXPOSE 4500
+COPY . .
 
-ENTRYPOINT ["node", "build/index.js"]
+EXPOSE 4500
