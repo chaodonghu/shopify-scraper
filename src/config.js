@@ -35,4 +35,8 @@ export const SITES = [
   {
     url: "100thieves.com",
   },
+  {
+    url: "shop.styll.ca",
+    keywords: [["Toronto"]],
+  },
 ];
