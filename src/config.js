@@ -43,4 +43,8 @@ export const SITES = [
     url: "lessoneseven.com",
     keywords: [["Nike"], ["Adidas", "Yeezy"], ["Jordan"]],
   },
+  {
+    url: "cntrbndshop.com",
+    keywords: [["Nike"], ["Adidas", "Yeezy"], ["Jordan"]],
+  },
 ];
