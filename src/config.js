@@ -37,7 +37,7 @@ export const SITES = [
   },
   {
     url: "shop.styll.ca",
-    keywords: [["Toronto"]],
+    keywords: [["Toronto"], ["Blue Jays"], ["Blue", "Jays"]],
   },
   {
     url: "lessoneseven.com",
