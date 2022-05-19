@@ -11,11 +11,11 @@ export const REQUEST_TIMING = 30000;
 export const SITES = [
   {
     url: "deadstock.ca",
-    keywords: [["Nike"], ["Adidas", "Yeezy"], ["Jordan"]],
+    keywords: [["Nike"], ["Adidas", "Yeezy"], ["Jordan"], ["Crocs"]],
   },
   {
     url: "capsuletoronto.com",
-    keywords: [["Nike"], ["Adidas", "Yeezy"], ["Jordan"]],
+    keywords: [["Nike"], ["Adidas", "Yeezy"], ["Jordan"], ["Crocs"]],
   },
   {
     url: "nomadshop.net",
@@ -30,7 +30,7 @@ export const SITES = [
   },
   {
     url: "shop.havenshop.com",
-    keywords: [["Nike"], ["Adidas", "Yeezy"], ["Jordan"]],
+    keywords: [["Nike"], ["Adidas", "Yeezy"], ["Jordan"], ["Crocs"]],
   },
   {
     url: "100thieves.com",
