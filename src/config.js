@@ -25,6 +25,9 @@ export const SITES = [
     url: "ca.octobersveryown.com",
   },
   {
+    url: "hiddenppf.com",
+  },
+  {
     url: "nrml.ca",
     keywords: [["Nike"], ["Adidas", "Yeezy"], ["Jordan"]],
   },
