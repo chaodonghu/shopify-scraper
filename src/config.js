@@ -54,4 +54,7 @@ export const SITES = [
     url: "kith.com",
     keywords: [["Nike"], ["Adidas", "Yeezy"], ["Jordan"], ["Crocs"]],
   },
+  {
+    url: "nocta.com",
+  },
 ];
