@@ -57,4 +57,8 @@ export const SITES = [
   {
     url: "nocta.com",
   },
+  {
+    url: "size.ca",
+    keywords: [["Nike"], ["Adidas", "Yeezy"], ["Jordan"], ["Crocs"]],
+  },
 ];
