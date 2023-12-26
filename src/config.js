@@ -69,4 +69,8 @@ export const SITES = [
     url: "utopiashop.ca",
     keywords: [["Nike"], ["Adidas", "Yeezy"], ["Jordan"], ["Crocs"]],
   },
+  {
+    url: "bdgastore.com",
+    keywords: [["Nike"], ["Adidas", "Yeezy"], ["Jordan"], ["Crocs"]],
+  },
 ];
