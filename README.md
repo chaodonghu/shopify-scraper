@@ -61,11 +61,6 @@ These should be defined in `/src/config.js`
 
 - [ ] Implement scraping on sites that do not utilize Shopify platform
 
-**Acknowledgements**
----
-
-+ This is an extension of the Shopify Monitor created by https://github.com/Dam998/shopify-monitor/.
-
 **Donations**
 ---
 
